@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="script/init.js"></script>
+    <script defer src="script/location.js"></script>
+    <script defer src="script/search_places.js"></script>
+    <title>BonApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+<div id="container">
+    <header>
+        <div id="first-header">
+            <div id="logo">
+                <img src="image/logo.svg" alt="BonApp Logo">
+            </div>
+            <div>
+                <p id="position-gps"></p> <!-- A SUPPRIMER -->
+            </div>
+            <div></div>
+        </div>
+
+        <div id="second-header">
+            <button id="scroll-left" class="scroll-button"><img src="image/left-arrow.svg" alt="Scroll left"></button>
+            <div id="activities">
+            </div>
+            <button id="scroll-right" class="scroll-button"><img src="image/right-arrow.svg" alt="Scroll right"></button>
+            <button id="show-filters">Filters</button>
+        </div>
+
+    </header>
+
+    <main>
+    </main>
+
+    <div id="filters" class="hidden">
+        <div id="filter-header">
+            <img id="close-filters" src="image/close.svg" alt="x">
+            <h2>Filters</h2>
+            <div></div>
+        </div>
+        <div class="separator"></div>
+        <div id="filter-main">
+            <div>
+                <p>Distance</p>
+            </div>
+            <div>
+                <p>Price</p>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div id="filter-footer">
+            <button id="reset-filters">Reset filters</button>
+            <button id="apply-filters">Apply filters</button>
+        </div>
+    </div>
+    <div id="show-map-button">
+        <p>Show map</p>
+        <img src="image/map.svg" alt="">
+    </div>
+</div>
+</body>
+</html>
