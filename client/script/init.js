@@ -71,32 +71,9 @@ function createActivities(activitiesList) {
     });
 }
 
-let activitiesList = [
-    {name: 'Restaurant', image: 'image/restaurant.svg'},
-    {name: 'Bar', image: 'image/restaurant.svg'},
-    {name: 'NightClub', image: 'image/restaurant.svg'},
-    {name: 'Cinema', image: 'image/restaurant.svg'},
-    {name: 'Theatre', image: 'image/restaurant.svg'},
-    {name: 'Museum', image: 'image/restaurant.svg'},
-    {name: 'Park', image: 'image/restaurant.svg'},
-    {name: 'Zoo', image: 'image/restaurant.svg'},
-    {name: 'Shopping', image: 'image/restaurant.svg'},
-    {name: 'Gym', image: 'image/restaurant.svg'},
-    {name: 'Spa', image: 'image/restaurant.svg'},
-    {name: 'BeautySalon', image: 'image/restaurant.svg'},
-    {name: 'HairSalon', image: 'image/restaurant.svg'},
-    {name: 'Massage', image: 'image/restaurant.svg'},
-    {name: 'Bowling', image: 'image/restaurant.svg'},
-    {name: 'Golf', image: 'image/restaurant.svg'},
-    {name: 'Tennis', image: 'image/restaurant.svg'},
-    {name: 'Football', image: 'image/restaurant.svg'},
-    ];
-
-//createActivities(activitiesList);
 initScrollArrows();
 initFilterButton();
 
-// appel de la route /api/activities
 fetch('/api/activities')
     .then(response => { return response.json(); })
     .then(data => {

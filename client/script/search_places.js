@@ -6,7 +6,7 @@ function createPlaces(placesList) {
         placeSection.classList.add('place');
         placeSection.innerHTML = `
             <div class="place-image">
-                <img src="${place.image}" alt="${place.name}">
+                <img src="${place.photo}" alt="${place.name}">
             </div>
             <div class="information">
                 <p class="place-name">${place.name}</p>
@@ -18,19 +18,6 @@ function createPlaces(placesList) {
     });
 }
 
-let placesList = [
-    {name: 'Restaurant', image: 'https://a0.muscache.com/im/pictures/5bfac08b-1294-4f23-9a51-bb7073b1d299.jpg?im_w=720', address: 'Umea', distance: '2 km'},
-    {name: 'Bar', image: 'https://a0.muscache.com/im/pictures/5bfac08b-1294-4f23-9a51-bb7073b1d299.jpg?im_w=720', address: 'Umea', distance: '2 km'},
-    {name: 'Bar', image: 'https://a0.muscache.com/im/pictures/5bfac08b-1294-4f23-9a51-bb7073b1d299.jpg?im_w=720', address: 'Umea', distance: '2 km'},
-    {name: 'Bar', image: 'https://a0.muscache.com/im/pictures/5bfac08b-1294-4f23-9a51-bb7073b1d299.jpg?im_w=720', address: 'Umea', distance: '2 km'},
-    {name: 'Bar', image: 'https://a0.muscache.com/im/pictures/5bfac08b-1294-4f23-9a51-bb7073b1d299.jpg?im_w=720', address: 'Umea', distance: '2 km'},
-    {name: 'Bar', image: 'https://a0.muscache.com/im/pictures/5bfac08b-1294-4f23-9a51-bb7073b1d299.jpg?im_w=720', address: 'Umea', distance: '2 km'},
-    {name: 'Bar', image: 'https://a0.muscache.com/im/pictures/5bfac08b-1294-4f23-9a51-bb7073b1d299.jpg?im_w=720', address: 'Umea', distance: '2 km'},
-    {name: 'Bar', image: 'https://a0.muscache.com/im/pictures/5bfac08b-1294-4f23-9a51-bb7073b1d299.jpg?im_w=720', address: 'Umea', distance: '2 km'},
-    {name: 'Bar', image: 'https://a0.muscache.com/im/pictures/5bfac08b-1294-4f23-9a51-bb7073b1d299.jpg?im_w=720', address: 'Umea', distance: '2 km'},
-    {name: 'Bar', image: 'https://a0.muscache.com/im/pictures/5bfac08b-1294-4f23-9a51-bb7073b1d299.jpg?im_w=720', address: 'Umea', distance: '2 km'},
-    {name: 'Bar', image: 'https://a0.muscache.com/im/pictures/5bfac08b-1294-4f23-9a51-bb7073b1d299.jpg?im_w=720', address: 'Umea', distance: '2 km'},
-    {name: 'Bar', image: 'https://a0.muscache.com/im/pictures/5bfac08b-1294-4f23-9a51-bb7073b1d299.jpg?im_w=720', address: 'Umea', distance: '2 km'}
-];
-
-createPlaces(placesList);
+fetch('/api/places')
+    .then(response => { return response.json(); })
+    .then(data => { createPlaces(data.data); });

@@ -18,6 +18,20 @@ async function getActivities(page = 1) {
     });
 }
 
+async function getAllPlaces(page = 1) {
+    const offset = (page - 1) * [config.rowsPerPage];
+    return db.task(async t => {
+        const data = await t.any("SELECT * FROM places", [offset, config.rowsPerPage]);
+        const meta = {page};
+        return {
+            data,
+            meta
+        }
+    });
+}
+
+
 module.exports = {
-    getActivities
+    getActivities,
+    getAllPlaces
 }

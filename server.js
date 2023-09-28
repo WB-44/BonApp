@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 const server = http.createServer(app);
 
 /* ROUTE */
-const activitiesRoutes = require('./routes/activities');
+const activitiesRoutes = require('./routes/api');
 
 /**===================
  * ===== PARSING =====
@@ -26,7 +26,7 @@ app.use(cookieParser());
 
 
 /* ROUTES */
-app.use('/api/activities', activitiesRoutes);
+app.use('/api', activitiesRoutes);
 
 /**=======================
  * ====== LANCEMENT ======
