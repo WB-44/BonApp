@@ -164,6 +164,7 @@ toInput.oninput = () => controlToInput(toSlider, fromInput, toInput, toSlider);
 initScrollArrows();
 initFilterButton();
 
+
 fetch('/api/activities')
     .then(response => { return response.json(); })
     .then(data => {

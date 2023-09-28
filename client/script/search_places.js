@@ -2,6 +2,8 @@ function createPlaces(placesList) {
     let main = document.querySelector('main');
     main.innerHTML = '';
     placesList.forEach(place => {
+        // round distance to 2 decimal places and add 'km' at the end
+        place.distance = Math.round(place.distance * 100) / 100 + ' km';
         let placeSection = document.createElement('section');
         placeSection.classList.add('place');
         placeSection.innerHTML = `
@@ -17,7 +19,8 @@ function createPlaces(placesList) {
         main.appendChild(placeSection);
     });
 }
-
+/*
 fetch('/api/places')
     .then(response => { return response.json(); })
     .then(data => { createPlaces(data.data); });
+*/

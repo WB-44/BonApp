@@ -1,12 +1,16 @@
 const options = {
     enableHighAccuracy: true,
-    timeout: 5000,
+    timeout: 10000,
     maximumAge: 0,
 };
 
 function success(pos) {
     const crd = pos.coords;
-    // document.getElementById('position-gps').innerHTML = `Your current position is: ${crd.latitude}, ${crd.longitude}`;
+    console.log(`Your current position is: ${crd.latitude}, ${crd.longitude}`);
+
+    fetch(`api/places/distance/${crd.latitude}/${crd.longitude}`)
+        .then(response => { return response.json(); })
+        .then(data => { createPlaces(data.data); });
 }
 
 function error(err) {

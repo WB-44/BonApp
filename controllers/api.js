@@ -30,8 +30,21 @@ async function getAllPlaces(page = 1) {
     });
 }
 
+async function getAllPlacesWithDistance(page = 1, latitude, longitude) {
+    const offset = (page - 1) * [config.rowsPerPage];
+    return db.task(async t => {
+        const data = await t.any(`SELECT *, (point(longitude, latitude) <@> point(${longitude}, ${latitude})) * 1.60934 AS distance FROM places ORDER BY distance;`, [offset, config.rowsPerPage]);
+        const meta = {page};
+        return {
+            data,
+            meta
+        }
+    });
+}
+
 
 module.exports = {
     getActivities,
-    getAllPlaces
+    getAllPlaces,
+    getAllPlacesWithDistance
 }
