@@ -10,6 +10,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const server = http.createServer(app);
 
+/* ROUTE */
+const activitiesRoutes = require('./routes/activities');
 
 /**===================
  * ===== PARSING =====
@@ -22,6 +24,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Cookies pour pouvoir être utilisable par la suite
 app.use(cookieParser());
 
+
+/* ROUTES */
+app.use('/api/activities', activitiesRoutes);
 
 /**=======================
  * ====== LANCEMENT ======

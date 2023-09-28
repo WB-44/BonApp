@@ -64,7 +64,7 @@ function createActivities(activitiesList) {
         let activityDiv = document.createElement('div');
         activityDiv.classList.add('activity');
         activityDiv.innerHTML = `
-            <img src="${activity.image}" alt="${activity.name}">
+            <img src="${activity.logo}" alt="${activity.name}">
             <p>${activity.name}</p>
         `;
         activities.appendChild(activityDiv);
@@ -92,6 +92,13 @@ let activitiesList = [
     {name: 'Football', image: 'image/restaurant.svg'},
     ];
 
-createActivities(activitiesList);
+//createActivities(activitiesList);
 initScrollArrows();
 initFilterButton();
+
+// appel de la route /api/activities
+fetch('/api/activities')
+    .then(response => { return response.json(); })
+    .then(data => {
+        createActivities(data.data);
+    });
