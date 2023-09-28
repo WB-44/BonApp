@@ -1,0 +1,22 @@
+{
+  "name": "bonapp",
+  "version": "1.0.0",
+  "description": "App to find nice places in Umea",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WB-44/BonApp.git"
+  },
+  "author": "BLOT William",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WB-44/BonApp/issues"
+  },
+  "homepage": "https://github.com/WB-44/BonApp#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
