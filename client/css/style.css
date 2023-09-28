@@ -225,6 +225,7 @@ main {
     margin: 1em;
     overflow: auto;
     flex: 1;
+    gap: 1em;
 }
 
 #filter-footer {
