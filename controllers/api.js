@@ -42,9 +42,22 @@ async function getAllPlacesWithDistance(page = 1, latitude, longitude) {
     });
 }
 
+async function getAllPlacesWithDistanceByActivity(page = 1, latitude, longitude, activity) {
+    const offset = (page - 1) * [config.rowsPerPage];
+    return db.task(async t => {
+        const data = await t.any(`select p.*, (point(p.longitude, p.latitude) <@> point(${longitude}, ${latitude})) * 1.60934 AS distance from activities_available aa JOIN places p ON aa.place_id = p.id where aa.activity_id = ${activity} ORDER BY distance;`, [offset, config.rowsPerPage]);
+        const meta = {page};
+        return {
+            data,
+            meta
+        }
+    });
+}
+
 
 module.exports = {
     getActivities,
     getAllPlaces,
-    getAllPlacesWithDistance
+    getAllPlacesWithDistance,
+    getAllPlacesWithDistanceByActivity
 }

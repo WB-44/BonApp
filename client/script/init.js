@@ -71,6 +71,17 @@ function createActivities(activitiesList) {
             <img src="${activity.logo}" alt="${activity.name}">
             <p>${activity.name}</p>
         `;
+        activityDiv.setAttribute('data-id', activity.id);
+
+        activityDiv.addEventListener('click', () => {
+            fetch(`/api/places/distance/${latitude}/${longitude}/${activity.id}`)
+                .then(response => { return response.json(); })
+                .then(data => {
+                    placesList = data.data;
+                    createPlaces();
+                });
+        });
+
         activities.appendChild(activityDiv);
     });
 }
@@ -173,5 +184,6 @@ initFilterButton();
 fetch('/api/activities')
     .then(response => { return response.json(); })
     .then(data => {
+        console.log(data.data);
         createActivities(data.data);
     });
