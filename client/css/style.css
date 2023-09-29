@@ -17,8 +17,40 @@
 }
 
 .hidden {
-    top: -100% !important;
+    bottom: -100% !important;
 }
+
+.display-none {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.fade-out {
+    animation: fadeOut 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
 
 html, body {
     margin: 0;
@@ -37,7 +69,8 @@ header {
     flex-direction: column;
     padding: 0 5em;
     gap: 1em;
-    box-shadow: 0 -6px 12px black
+    box-shadow: 0 -6px 12px black;
+    z-index: 1;
 }
 
 #first-header {
@@ -106,6 +139,12 @@ header {
     align-items: center;
     font-weight: 500;
     cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0.6;
+}
+
+.activity:hover {
+    opacity: 1;
 }
 
 .activity img {
@@ -124,14 +163,25 @@ header {
     transform: scale(1.1);
 }
 
-
 main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: auto;
+}
+
+#places-container {
     display: flex;
     align-items: center;
     gap: 1em;
     padding: 1.5em 5em;
     flex-wrap: wrap;
-    overflow: auto;
+}
+
+#map {
+    display: flex;
+    flex: 1;
+    z-index: 0;
 }
 
 .place {
@@ -199,8 +249,9 @@ main {
 #filters {
     position: fixed;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 50%;
+    transition: bottom 0.75s ease-in-out;
+    transform: translate(-50%, 50%);
     width: 50%;
     height: 80%;
     display: flex;
@@ -360,4 +411,24 @@ input[type="range"] {
 }
 .form_control_container:nth-child(2), #toInput {
     text-align: right;
+}
+
+#footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    padding: 2em 5em;
+    background-color: var(--color-blue-3);
+}
+
+#left-footer, #right-footer {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    gap: 0.5em;
+}
+
+#right-footer {
+    align-items: flex-end;
 }

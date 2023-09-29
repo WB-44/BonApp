@@ -1,3 +1,7 @@
+let map_mode = false;
+let placesList = [];
+
+
 function ScrollArrow(scrollable, leftarrow, rightarrow, direction) {
     scrollable.scrollBy({
         top: 0,
@@ -70,6 +74,7 @@ function createActivities(activitiesList) {
         activities.appendChild(activityDiv);
     });
 }
+
 
 
 function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {

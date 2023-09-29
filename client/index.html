@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+
     <script defer src="script/init.js"></script>
     <script defer src="script/location.js"></script>
     <script defer src="script/search_places.js"></script>
+    <script defer src="script/map.js"></script>
+
     <title>BonApp</title>
     <link rel="icon" type="image/x-icon" href="image/favicon.svg">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
@@ -32,6 +40,29 @@
     </header>
 
     <main>
+        <div id="places-container">
+
+        </div>
+
+        <div id="map" class="display-none">
+
+        </div>
+
+        <div id="footer">
+            <div id="left-footer">
+                <img src="image/logo_white.svg" alt="BonApp Logo">
+                <p>© 2023 BonApp</p>
+                <p>Umeå universitet</p>
+                <p>Databasteknik</p>
+            </div>
+            <div id="right-footer">
+                <h4>Created by</h4>
+                <p>BLOT William</p>
+                <p>LE GALL Tristan</p>
+                <p>VASSELLE Paul</p>
+                <p>KHOUILDI NADIR Douzi</p>
+            </div>
+        </div>
     </main>
 
     <div id="filters" class="hidden">
