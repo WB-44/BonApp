@@ -184,6 +184,5 @@ initFilterButton();
 fetch('/api/activities')
     .then(response => { return response.json(); })
     .then(data => {
-        console.log(data.data);
         createActivities(data.data);
     });
