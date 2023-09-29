@@ -185,4 +185,5 @@ fetch('/api/activities')
     .then(response => { return response.json(); })
     .then(data => {
         createActivities(data.data);
-    });
+        document.querySelector('#show-map-button').classList.remove('hidden');
+    })

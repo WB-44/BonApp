@@ -2,19 +2,28 @@ let map_button = document.querySelector('#show-map-button');
 let map = document.querySelector('#map');
 let places_container = document.querySelector('#places-container');
 let ll_map = null;
+
 map_button.addEventListener('click', () => {
+    // A OPTIMISER
     map_mode = !map_mode;
 
     let footer = document.querySelector('#footer');
 
-   // create a fade out effect for the places container
-    places_container.classList.add('fade-out');
-    footer.classList.add('fade-out');
+    if (map_mode) {
+    map_button.classList.add('hidden');
+        places_container.classList.remove('fade-in');
+        footer.classList.remove('fade-in');
+        places_container.classList.add('fade-out');
+        footer.classList.add('fade-out');
     setTimeout(() => {
         places_container.classList.add('display-none');
         footer.classList.add('display-none');
         map.classList.remove('display-none');
+        map.classList.remove('fade-out');
         map.classList.add('fade-in');
+        map_button.querySelector('p').innerHTML = 'Show list';
+        map_button.querySelector('img').src = 'image/list.svg';
+        map_button.classList.remove('hidden');
     }, 1000);
 
     setTimeout(function(){ll_map.invalidateSize(true);},1000);
@@ -24,6 +33,25 @@ map_button.addEventListener('click', () => {
     L.marker([latitude, longitude]).addTo(ll_map)
         .bindPopup('You are here.')
         .openPopup();
+    } else {
+        map_button.classList.add('hidden');
+        map.classList.remove('fade-in');
+        map.classList.add('fade-out');
+        setTimeout(() => {
+            map.classList.add('display-none');
+            footer.classList.remove('display-none');
+            places_container.classList.remove('display-none');
+            footer.classList.remove('fade-out');
+            places_container.classList.remove('fade-out');
+            footer.classList.add('fade-in');
+            places_container.classList.add('fade-in');
+            map_button.querySelector('p').innerHTML = 'Show map';
+            map_button.querySelector('img').src = 'image/map.svg';
+            map_button.classList.remove('hidden');
+        }, 1000);
+
+        createPlaces(false);
+    }
 });
 
 
