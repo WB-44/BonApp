@@ -1,5 +1,5 @@
 function createPlace(place) {
-    place.distance = Math.round(place.distance * 100) / 100 + ' km';
+    let distance = Math.round(place.distance * 100) / 100 + ' km';
     let placeSection = document.createElement('section');
     placeSection.classList.add('place');
     placeSection.innerHTML = `
@@ -9,7 +9,7 @@ function createPlace(place) {
             <div class="information">
                 <p class="place-name">${place.name}</p>
                 <p class="place-address">${place.address}</p>
-                <p class="place-distance">${place.distance}</p>
+                <p class="place-distance">${distance}</p>
             </div>
         `;
     return placeSection;
@@ -47,10 +47,13 @@ function createPlaces(fade_in = true) {
         }
 
     } else {
+        layerGroup.clearLayers();
         placesList.forEach(place => {
-            L.marker([place.latitude, place.longitude]).addTo(ll_map)
-                .bindPopup(place.name)
-                .openPopup();
+            let distance = Math.round(parseFloat(place.distance) * 100) / 100 + ' km';
+            let marker = L.marker([place.latitude, place.longitude], {
+                icon: PlaceMarker
+            }).addTo(ll_map).bindPopup(`<p>${place.name}</p><p>${place.address}</p><p>${distance}</p>`);
+            layerGroup.addLayer(marker);
         });
     }
 }

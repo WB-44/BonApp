@@ -2,6 +2,21 @@ let map_button = document.querySelector('#show-map-button');
 let map = document.querySelector('#map');
 let places_container = document.querySelector('#places-container');
 let ll_map = null;
+let layerGroup = null;
+
+const myLocMarker = L.icon({
+    iconUrl: "image/marker/myloc.svg",
+    iconSize:     [30, 45],
+    popupAnchor:  [0, -45],
+    iconAnchor:   [15, 45]
+});
+
+const PlaceMarker = L.icon({
+    iconUrl: "image/marker/places.svg",
+    iconSize:     [30, 45],
+    popupAnchor:  [0, -45],
+    iconAnchor:   [15, 45]
+});
 
 map_button.addEventListener('click', () => {
     // A OPTIMISER
@@ -26,13 +41,15 @@ map_button.addEventListener('click', () => {
         map_button.classList.remove('hidden');
     }, 1000);
 
+    mapSetup();
+    layerGroup = L.layerGroup().addTo(ll_map);
+    createPlaces();
+    L.marker([latitude, longitude], {
+        icon: myLocMarker
+    }).addTo(ll_map).bindPopup('You are here.');
+
     setTimeout(function(){ll_map.invalidateSize(true);},1000);
 
-    mapSetup();
-    createPlaces();
-    L.marker([latitude, longitude]).addTo(ll_map)
-        .bindPopup('You are here.')
-        .openPopup();
     } else {
         map_button.classList.add('hidden');
         map.classList.remove('fade-in');

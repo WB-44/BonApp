@@ -9,7 +9,7 @@ const db = pgp(config.db);
 async function getActivities(page = 1) {
     const offset = (page - 1) * [config.rowsPerPage];
     return db.task(async t => {
-        const data = await t.any("SELECT * FROM activities ORDER BY name;", [offset, config.rowsPerPage]);
+        const data = await t.any("SELECT * FROM activities ORDER BY id;", [offset, config.rowsPerPage]);
         const meta = {page};
         return {
             data,
