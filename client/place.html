@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/place.css">
 
+    <script defer src="script/init_place_page.js"></script>
+
     <title>BonApp</title>
     <link rel="icon" type="image/x-icon" href="image/favicon.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -29,17 +31,12 @@
                 <div id="text-content">
                     <div id="place-name-container">
                         <h1 id="place-name">Place name</h1>
-                        <h2 id="place-distance">Distance</h2>
+                        <!-- <h2 id="place-distance">Distance</h2> -->
                     </div>
                 </div>
             </div>
 
-            <div id="tags">
-                <div class="tag">
-                    <img src="image/activities/boule.svg">
-                    <p>Boule</p>
-                </div>
-            </div>
+            <div id="tags"></div>
 
             <div id="place-description">
                 <h3>Description</h3>
@@ -48,10 +45,10 @@
 
             <div id="place-information">
                 <div id="general-information">
-                    <h3>Informations générales</h3>
-                    <p>Adresse : 3 rue de la paix</p>
-                    <p>Telephone : 06 06 06 06 06</p>
-                    <p>Site web : <a href="https://www.google.com">https://www.google.com</a></p>
+                    <h3>General Information</h3>
+                    <p id="address">Address : </p>
+                    <p id="phone-number">Phone Number : </p>
+                    <p id="website">Website : <a href="https://www.google.com">https://www.google.com</a></p>
                 </div>
                 <div id="opening-hours">
                     <h3>Horaires d'ouverture</h3>
