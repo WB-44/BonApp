@@ -12,6 +12,9 @@ function createPlace(place) {
                 <p class="place-distance">${distance}</p>
             </div>
         `;
+    placeSection.addEventListener('click', () => {
+        window.open( `/place.html?id=${place.id}`, '_blank');
+    });
     return placeSection;
 }
 
