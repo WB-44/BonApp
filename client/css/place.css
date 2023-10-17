@@ -52,7 +52,7 @@
 
 #tags {
     display: flex;
-    gap: 0.5em;
+    gap: 1em;
 }
 
 .tag {
@@ -71,8 +71,8 @@
 }
 
 .tag img {
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
     filter: invert(23%) sepia(97%) saturate(2375%) hue-rotate(96deg) brightness(93%) contrast(104%); /* Convert to green */
 }
 
