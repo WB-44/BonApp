@@ -54,10 +54,29 @@ async function getAllPlacesWithDistanceByActivity(page = 1, latitude, longitude,
     });
 }
 
+async function getPlace(id) {
+    return db.task(async t => {
+        const data = await t.one("SELECT * FROM places WHERE id = $1;", id);
+        return {
+            data
+        }
+    });
+}
+
+async function getPlaceActivities(id) {
+    return db.task(async t => {
+        const data = await t.any("SELECT a.name, a.logo FROM activities_available aa, activities a WHERE aa.place_id = $1 and aa.activity_id = a.id;", id);
+        return {
+            data
+        }
+    });
+}
 
 module.exports = {
     getActivities,
     getAllPlaces,
     getAllPlacesWithDistance,
-    getAllPlacesWithDistanceByActivity
+    getAllPlacesWithDistanceByActivity,
+    getPlace,
+    getPlaceActivities
 }

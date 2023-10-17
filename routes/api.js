@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getActivities, getAllPlaces, getAllPlacesWithDistance, getAllPlacesWithDistanceByActivity } = require("../controllers/api");
+const { getActivities, getAllPlaces, getAllPlacesWithDistance, getAllPlacesWithDistanceByActivity, getPlace, getPlaceActivities } = require("../controllers/api");
 
 /* GET product list */
 router.get('/activities/', async function(req, res, next) {
@@ -33,5 +33,22 @@ router.get('/places/distance/:latitude/:longitude/:activity', async function(req
         next(err);
     }
 });
+
+router.get('/places/id/:id', async function(req, res, next) {
+    try {
+        res.json(await getPlace(req.params.id));
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.get('/places/id/:id/activities', async function(req, res, next) {
+    try {
+        res.json(await getPlaceActivities(req.params.id));
+    } catch (err) {
+        next(err);
+    }
+});
+
 
 module.exports = router;
