@@ -72,11 +72,21 @@ async function getPlaceActivities(id) {
     });
 }
 
+async function getOpenHours(id) {
+    return db.task(async t => {
+        const data = await t.any("SELECT * FROM opening_hours WHERE place_id = $1 ORDER BY day_of_the_week;", id);
+        return {
+            data
+        }
+    });
+}
+
 module.exports = {
     getActivities,
     getAllPlaces,
     getAllPlacesWithDistance,
     getAllPlacesWithDistanceByActivity,
     getPlace,
-    getPlaceActivities
+    getPlaceActivities,
+    getOpenHours
 }
