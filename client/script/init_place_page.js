@@ -1,3 +1,10 @@
+function formatNumber(number) {
+    if (number < 10) {
+        return '0' + number;
+    }
+    return number;
+}
+
 function initAllContainers(data) {
     document.querySelector('#place-name').innerHTML = data.name;
     document.querySelector('#address').innerHTML = 'Address : ' + data.address;
@@ -16,6 +23,22 @@ function createTags(data) {
     });
 }
 
+function addOpeningHours(data) {
+    let dayContainer = document.querySelector('#opening-hours');
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+    for (let i = 0; i < 7; i++) {
+       let day = document.createElement('p');
+       if (data[i].open === false) {
+           day.innerHTML = `${days[i]} : Closed`;
+       }
+       else {
+           day.innerHTML = `${days[i]} : ${formatNumber(data[i].opening_hour)}:${formatNumber(data[i].opening_minute)} - ${formatNumber(data[i].closing_hour)}:${formatNumber(data[i].closing_minute)}`;
+       }
+       dayContainer.appendChild(day);
+    }
+}
+
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
@@ -32,4 +55,9 @@ fetch(`api/places/id/${id}/activities`)
         createTags(data.data)
     });
 
+fetch(`api/places/id/${id}/openhours`)
+    .then(response => { return response.json(); })
+    .then(data => {
+        addOpeningHours(data.data)
+    });
 
