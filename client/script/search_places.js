@@ -55,7 +55,7 @@ function createPlaces(fade_in = true) {
             let distance = Math.round(parseFloat(place.distance) * 100) / 100 + ' km';
             let marker = L.marker([place.latitude, place.longitude], {
                 icon: PlaceMarker
-            }).addTo(ll_map).bindPopup(`<p>${place.name}</p><p>${place.address}</p><p>${distance}</p>`);
+            }).addTo(ll_map).bindPopup(`<h4><a href=place.html?id=${place.id} target="_blank">${place.name}</a></h4><p>${place.address}</p><p>${distance}</p>`);
             layerGroup.addLayer(marker);
         });
     }
