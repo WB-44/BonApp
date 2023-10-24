@@ -11,6 +11,12 @@ function initAllContainers(data) {
     document.querySelector('#phone-number').innerHTML = 'Phone Number : ' + data.phone_number;
     document.querySelector('#website').innerHTML = `Website : <a href="https://${data.website}">${data.website}</a>`;
     document.querySelector('#place-image').src = data.photo;
+    document.querySelector('#place-image').alt = data.name;
+
+    let description = data.description;
+    description = description.replaceAll('\\n', '<br>');
+    document.querySelector('#place-description p').innerHTML = description;
+
 }
 
 function createTags(data) {
